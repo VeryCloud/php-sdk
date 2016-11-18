@@ -22,6 +22,11 @@ class Token {
   const PASSWORD = 'test';
 
   /**
+   * @var string 加密公钥
+   */
+  const PUBLIC_KEY = 'verycloud#cryptpass';
+
+  /**
    * @var string token
    */
   private static $token;
@@ -41,7 +46,7 @@ class Token {
 
     $send_data = array(
       'username' => self::USERNAME,
-      'password' => Encrypt::encrypt(self::PASSWORD, 'dsfgsdfgdsgsdg')
+      'password' => Encrypt::encrypt(self::PASSWORD, self::PUBLIC_KEY)
     );
 
     $url = Request::$api_url . '/API/OAuth/authorize';
